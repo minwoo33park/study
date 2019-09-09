@@ -9,7 +9,7 @@ The label `top` reads the first letter. Empty program is valid and if it starts 
 The label `pop_one` assumes we have removed the leading 1 and keeps removing 1 until R1 is empty or we get #. If R1 is empty the program is invalid because it is ending with 1. If we get # we go to the label `consecutive_check`.
 The label `consecutive_check` checks if the consecutive `#`'s are longer than 5. So we use 5 `case 1` instructions to check the length. If 1 comes up before 6 consecutive #'s, we go to the label `pop_one` again. Also, if we find out R1 is empty, we conclude the program is valid because it is ending with #. At the last case instruction of `consecutive_check`, if # comes up, we conclude the program is invalid because we found `######` in the program.
 
-```
+```text
 label top
 case 1
 goto valid
@@ -65,7 +65,7 @@ label end
 
 This 1# sanity code will generate the following 1# program:
 
-```
+```text
 1##### ;Line 1 - Case on R1 (Label top)
 1111111### ;Line 2 - Jump forward 7 (Goto valid)
 11### ;Line 3 - Jump forward 2 (Goto pop_one)
@@ -111,7 +111,7 @@ Instead of adding # to R4, we add 1 because for 0th power we get 1.
 For step 7, we use `φbump(multiply,3)`.  
 For steps 5 and 9, change jump line numbers according to modified program.
 (I had to add 120 one's for each steps)
-```
+```text
 Inputs:
 R1: 11
 R2: 1#1
@@ -121,7 +121,7 @@ R1: 11##1111
 
 The program for function $f(x,y) = x^y$ is as follows.
 
-```
+```text
 ; R1 has original n
 ; R2 has original m
 ; R3 has a counter, starting with 0 and ending with m
@@ -183,10 +183,10 @@ The program for function $f(x,y) = x^y$ is as follows.
 
 Given a program p, if p is tidy, p itself is its tidy equivalent.  
 if p is not tidy with n instructions, we add two more instructions at the end:  
-```
+```text
 1###
 1####
-```  
+```text  
 This makes an infinite loop.  
 Now, add `11` in front of all the move forward instructions that used to make proper halt so that they will still result in proper halt.  
 Next, change all the move forward and backward instructions that makes improper stop to go to the infinite loop at the end.  
@@ -198,7 +198,7 @@ Since we just changed the program's behavior for improper stop to do an infinite
 ###problem4
 
 (a)
-```
+```text  
 1##### ;Line 1 - Case on R1 (Label top)
 111### ;Line 2 - Jump forward 3 (Goto c2)
 11#### ;Line 3 - Jump backwards 2 (Goto top)
